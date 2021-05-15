@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.xml.soap.Text;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -59,6 +60,10 @@ public class PanelAgregar extends JPanel {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {  
+				
+				String limpiar = tbNuevaPelicula.getText();	
+				limpiar = limpiar.trim();
+				tbNuevaPelicula.setText(limpiar);	
 				
 				if(tbNuevaPelicula.getText().length()==0 || String.valueOf(cbGenero.getSelectedItem()) == "Seleccione un genero") {
 					JOptionPane.showMessageDialog(null, "Error");	
