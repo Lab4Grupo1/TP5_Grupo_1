@@ -58,17 +58,18 @@ public class PanelAgregar extends JPanel {
 		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) { 
-				
-				
+			public void actionPerformed(ActionEvent arg0) {  
 				
 				if(tbNuevaPelicula.getText().length()==0 || String.valueOf(cbGenero.getSelectedItem()) == "Seleccione un genero") {
 					JOptionPane.showMessageDialog(null, "Error");	
 				}
 				else {
 					Peliculas nuevaPelicula = new Peliculas(tbNuevaPelicula.getText(), String.valueOf(cbGenero.getSelectedItem()));				
-					JOptionPane.showMessageDialog(null, nuevaPelicula.toString());
+					JOptionPane.showMessageDialog(null, nuevaPelicula.toString());			
+					panel.setVisible(false);		
 				}
+				
+			     	
 			}
 		});
 		btnAceptar.setBounds(92, 184, 89, 23);
