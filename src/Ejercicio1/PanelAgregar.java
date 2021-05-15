@@ -49,8 +49,8 @@ public class PanelAgregar extends JPanel {
 		cbGenero = new JComboBox<Genero>();
 		cbGenero.setBounds(172, 123, 163, 20);
 		panel.add(cbGenero); 
-		
-		//cbGenero.addItem("Seleccione un genero");
+		 
+		cbGenero.addItem(new Genero("Seleccione un genero"));
 		cbGenero.addItem(new Genero("Terror"));
 		cbGenero.addItem(new Genero("Accion"));
 		cbGenero.addItem(new Genero("Suspenso"));
@@ -60,8 +60,15 @@ public class PanelAgregar extends JPanel {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) { 
 				
-				Peliculas nuevaPelicula = new Peliculas(tbNuevaPelicula.getText(), String.valueOf(cbGenero.getSelectedItem()));				
-				JOptionPane.showMessageDialog(null, nuevaPelicula.toString());				
+				
+				
+				if(tbNuevaPelicula.getText().length()==0 || String.valueOf(cbGenero.getSelectedItem()) == "Seleccione un genero") {
+					JOptionPane.showMessageDialog(null, "Error");	
+				}
+				else {
+					Peliculas nuevaPelicula = new Peliculas(tbNuevaPelicula.getText(), String.valueOf(cbGenero.getSelectedItem()));				
+					JOptionPane.showMessageDialog(null, nuevaPelicula.toString());
+				}
 			}
 		});
 		btnAceptar.setBounds(92, 184, 89, 23);
