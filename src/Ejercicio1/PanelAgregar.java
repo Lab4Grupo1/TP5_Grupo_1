@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.xml.soap.Text;
 import javax.swing.JComboBox;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -15,6 +16,7 @@ public class PanelAgregar extends JPanel {
 	private JTextField tbNuevaPelicula;
 	private JComboBox<Genero> cbGenero;
 	private JButton btnAceptar;
+	private DefaultListModel<Peliculas> dlModel;
 	
 	public PanelAgregar() {
 		setLayout(null);
@@ -63,21 +65,38 @@ public class PanelAgregar extends JPanel {
 				
 				String limpiar = tbNuevaPelicula.getText();	
 				limpiar = limpiar.trim();
-				tbNuevaPelicula.setText(limpiar);	
+				//tbNuevaPelicula.setText(limpiar);	
 				
-				if(tbNuevaPelicula.getText().length()==0 || String.valueOf(cbGenero.getSelectedItem()) == "Seleccione un genero") {
-					JOptionPane.showMessageDialog(null, "Error");	
+				if(limpiar.length()==0 && String.valueOf(cbGenero.getSelectedItem()) == "Seleccione un genero") {
+					JOptionPane.showMessageDialog(null, "Error Ingrese un nombre y seleccione un genero");	
+				}
+				else if(limpiar.length()==0) {
+					JOptionPane.showMessageDialog(null, "Error Ingrese un nombre");	
+				}
+				else if(String.valueOf(cbGenero.getSelectedItem()) == "Seleccione un genero") {
+					JOptionPane.showMessageDialog(null, "Error seleccione un genero");	
 				}
 				else {
-					Peliculas nuevaPelicula = new Peliculas(tbNuevaPelicula.getText(), String.valueOf(cbGenero.getSelectedItem()));				
+					Peliculas peli= new Peliculas();
+					peli.setId(Integer.parseInt(String.valueOf(Peliculas.ProximoId())));
+					peli.setNombre(limpiar);
+					peli.setGenero((Genero)cbGenero.getSelectedItem());
+					//list model
+					dlModel.addElement(peli);
+					
+					Peliculas nuevaPelicula = new Peliculas(limpiar, (Genero)cbGenero.getSelectedItem());	
 					JOptionPane.showMessageDialog(null, nuevaPelicula.toString());			
-					panel.setVisible(false);		
+					panel.setVisible(false);
+					
 				}
 				
-			     	
 			}
 		});
 		btnAceptar.setBounds(92, 184, 89, 23);
 		panel.add(btnAceptar);
+	}
+	
+	public void setDlModel(DefaultListModel<Peliculas> dlModel) {
+		this.dlModel = dlModel;
 	}
 }

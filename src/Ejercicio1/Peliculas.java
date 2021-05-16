@@ -4,7 +4,7 @@ public class Peliculas {
 	
 	private int id;
 	private String nombre;
-	private String genero;
+	private Genero genero;
 	private static int cont = 0;
 	
 	public static int ProximoId() {
@@ -14,11 +14,15 @@ public class Peliculas {
 	public Peliculas() {
 	}
 
-	public Peliculas(String nombre, String genero) {
+	public Peliculas(String nombre,Genero genero) {
 		cont ++;
 		this.id = cont;
 		this.nombre = nombre;
 		this.genero = genero;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getId() {
@@ -33,17 +37,18 @@ public class Peliculas {
 		this.nombre = nombre;
 	}
 
-	public String getGenero() {
+	public Genero getGenero() {
 		return genero;
 	}
 
-	public void setGenero(String genero) {
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "Peliculas-> ID: " + this.id + " Nombre: " + this.nombre + " Genero: " + this.genero;
+		return "ID: " + this.id + " Nombre: " + this.nombre + " Genero: " + this.genero;
 	}
 	
 	

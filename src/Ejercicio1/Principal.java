@@ -2,8 +2,10 @@ package Ejercicio1;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
- 
+
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
@@ -17,6 +19,7 @@ public class Principal extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
+	private static DefaultListModel<Peliculas> dlModel;
  
 	
 	public static void main(String[] args) {
@@ -45,11 +48,15 @@ public class Principal extends JFrame {
 		JMenu mnPeliculas = new JMenu("Peliculas");
 		menuBar.add(mnPeliculas);
 		
+		dlModel= new DefaultListModel<Peliculas>();
+		
+		//Agregar
 		JMenuItem mntmAgregar = new JMenuItem("Agregar");
 		mntmAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
 				PanelAgregar panel = new PanelAgregar(); 
+				panel.setDlModel(dlModel);
 				contentPane.add(panel);
 				contentPane.repaint();
 				contentPane.revalidate();				
@@ -57,11 +64,14 @@ public class Principal extends JFrame {
 		});
 		mnPeliculas.add(mntmAgregar);
 		
+		
+		//Mostrar Listar
 		JMenuItem mntmListar = new JMenuItem("Listar");
 		mntmListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
 				PanelListar panel = new PanelListar(); 
+				panel.setDlModel(dlModel);
 				contentPane.add(panel);
 				contentPane.repaint();
 				contentPane.revalidate();			
