@@ -86,7 +86,10 @@ public class PanelAgregar extends JPanel {
 					
 					Peliculas nuevaPelicula = new Peliculas(limpiar, (Genero)cbGenero.getSelectedItem());	
 					JOptionPane.showMessageDialog(null, nuevaPelicula.toString());			
-					panel.setVisible(false);
+					
+					lbID.setText(String.valueOf(Peliculas.ProximoId()));
+					tbNuevaPelicula.setText("");
+					cbGenero.setSelectedIndex(0);
 					
 				}
 				
