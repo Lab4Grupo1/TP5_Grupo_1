@@ -64,7 +64,7 @@ public class PanelListar extends JPanel {
 	            }
 
 	          }
-	    // Limpio la lista original
+	    // Limpio la lista original.
 	    dlModel.removeAllElements();
 	    // Le agrego los elementos peliculas ordenados.
 	    for(int i=0;i<n;i++) {

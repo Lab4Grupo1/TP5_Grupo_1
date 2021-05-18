@@ -50,7 +50,7 @@ public class Principal extends JFrame {
 		
 		dlModel= new DefaultListModel<Peliculas>();
 		
-		//Agregar
+		//Agregar.
 		JMenuItem mntmAgregar = new JMenuItem("Agregar");
 		mntmAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

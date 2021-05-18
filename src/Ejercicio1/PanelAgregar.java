@@ -84,7 +84,7 @@ public class PanelAgregar extends JPanel {
 					dlModel.addElement(peli);
 					
 					Peliculas nuevaPelicula = new Peliculas(limpiar, (Genero)cbGenero.getSelectedItem());
-					// Muestro por pantalla el valor agregado.
+					// Muestro por pantalla el valor agregado
 					JOptionPane.showMessageDialog(null, nuevaPelicula.toString());			
 					
 					// Le asigno el próximo ID por pantalla y limpio el JTextField y le asigno el index del combo en 0 para que quede
