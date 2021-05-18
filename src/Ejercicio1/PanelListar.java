@@ -45,12 +45,12 @@ public class PanelListar extends JPanel {
 	
 	public void sortList(){
 	    Peliculas temp;
-	    // Seteo el array con el tamaño del objeto de las peliculas
+	    // Seteo el array con el tamaño del objeto de las peliculas.
 		Peliculas[] ob = new Peliculas[dlModel.getSize()];
-		//Lo recorro y le agrego todos los objetos películas
+		//Lo recorro y le agrego todos los objetos películas.
 	    for(int i = 0 ; i <dlModel.getSize(); i++ )
 	        ob[i] = dlModel.getElementAt(i);
-	    //Me traigo cuantos tiene para el for
+	    //Me traigo cuantos tiene para el for.
 	    int n=ob.length;
 	    for(int i=0;i<n;i++)
 	        for(int j=0;j<n-i-1;j++)

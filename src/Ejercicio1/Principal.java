@@ -65,7 +65,7 @@ public class Principal extends JFrame {
 		mnPeliculas.add(mntmAgregar);
 		
 		
-		//Mostrar Listar
+		//Mostrar Listar.
 		JMenuItem mntmListar = new JMenuItem("Listar");
 		mntmListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

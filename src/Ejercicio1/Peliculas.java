@@ -90,6 +90,7 @@ public class Peliculas implements Comparable<Peliculas> {
 
 	@Override
 	public int compareTo(Peliculas o) {		
+		//Comparar para ordenar por nombre.
 		return this.getNombre().compareTo(o.getNombre());
 	}
 
