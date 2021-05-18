@@ -1,7 +1,10 @@
 package Ejercicio1;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+
+import java.util.Collections;
+import java.util.Comparator;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -32,7 +35,42 @@ public class PanelListar extends JPanel {
 
 
 	public void setDlModel(DefaultListModel<Peliculas> dlModel) {
+		// Le seteo dentro del panel el default list model
 		this.dlModel = dlModel;
-		listar.setModel(dlModel);
+		// Lo ordeno alfabéticamente mediante método privado
+		sortList();
+		//Lo seteo sobre el default list model del panel.
+		listar.setModel(this.dlModel);
+	}
+	
+	public void sortList(){
+	    Peliculas temp;
+	    // Seteo el array con el tamaño del objeto de las peliculas
+		Peliculas[] ob = new Peliculas[dlModel.getSize()];
+		//Lo recorro y le agrego todos los objetos películas
+	    for(int i = 0 ; i <dlModel.getSize(); i++ )
+	        ob[i] = dlModel.getElementAt(i);
+	    //Me traigo cuantos tiene para el for
+	    int n=ob.length;
+	    for(int i=0;i<n;i++)
+	        for(int j=0;j<n-i-1;j++)
+	        {
+	        	// Aplico lógica compare To, si es mayor, lo baja para aplicar el orden ascendente.
+	            if(ob[j].compareTo(ob[j+1]) > 0)
+	            {
+	             temp=ob[j];
+	             ob[j]=ob[j+1];
+	             ob[j+1]=temp;
+	            }
+
+	          }
+	    // Limpio la lista original
+	    dlModel.removeAllElements();
+	    // Le agrego los elementos peliculas ordenados.
+	    for(int i=0;i<n;i++) {
+	    	dlModel.addElement((Peliculas) ob[i]);
+	    }
+	    System.out.println("Ordenados!");
+
 	}
 }

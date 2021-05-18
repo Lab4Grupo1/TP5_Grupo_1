@@ -65,7 +65,6 @@ public class PanelAgregar extends JPanel {
 				
 				String limpiar = tbNuevaPelicula.getText();	
 				limpiar = limpiar.trim();
-				//tbNuevaPelicula.setText(limpiar);	
 				
 				if(limpiar.length()==0 && String.valueOf(cbGenero.getSelectedItem()) == "Seleccione un genero") {
 					JOptionPane.showMessageDialog(null, "Error Ingrese un nombre y seleccione un genero");	
@@ -81,12 +80,15 @@ public class PanelAgregar extends JPanel {
 					peli.setId(Integer.parseInt(String.valueOf(Peliculas.ProximoId())));
 					peli.setNombre(limpiar);
 					peli.setGenero((Genero)cbGenero.getSelectedItem());
-					//list model
+					//Agrego a la lista la película
 					dlModel.addElement(peli);
 					
-					Peliculas nuevaPelicula = new Peliculas(limpiar, (Genero)cbGenero.getSelectedItem());	
+					Peliculas nuevaPelicula = new Peliculas(limpiar, (Genero)cbGenero.getSelectedItem());
+					// Muestro por pantalla el valor agregado
 					JOptionPane.showMessageDialog(null, nuevaPelicula.toString());			
 					
+					// Le asigno el próximo ID por pantalla y limpio el JTextField y le asigno el index del combo en 0 para que quede
+					// limpia la pantalla.
 					lbID.setText(String.valueOf(Peliculas.ProximoId()));
 					tbNuevaPelicula.setText("");
 					cbGenero.setSelectedIndex(0);
